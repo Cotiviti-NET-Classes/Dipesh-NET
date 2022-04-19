@@ -59,8 +59,8 @@ namespace ABC
             Console.WriteLine("--------- Child 3, with 1 interface ---------");
             PetrolBike petrolBike = new()
             {
-                name = "",
-                model = "",
+                name = "Yamaha",
+                model = "FZ",
                 mileage = 20.5,
             };
             petrolBike.Display();

@@ -9,7 +9,7 @@ public class Car
     public string name;
     public void Display()
     {
-        Console.WriteLine("Hello from Car.");
+        Console.WriteLine($"Hello from Car: {name}");
     }
 }
 
@@ -21,7 +21,7 @@ public class ElectricVehicle : Car, ICharge
     //Overriding the Parent method: Display()
     public void Display()
     {
-        Console.WriteLine("Hello, I am EV Car.");
+        Console.WriteLine($"Hello, I am EV Car: {name}, Voltage: {voltage}");
     }
 
     public void Charge()
@@ -30,11 +30,21 @@ public class ElectricVehicle : Car, ICharge
     }
 }
 
-//Grand Child which inherits Child Class 1- ElectricVehicle
-public class Hummer : ElectricVehicle
+//Grand Child which inherits Child Class 1- ElectricVehicle and It is protected from being inherited.
+public sealed class Hummer : ElectricVehicle
 {
     public double mileage;
 }
+
+
+/********* -Running this wil show build error as Hummer is sealed and can't be inherited- ***********/
+// public class Check : Hummer
+// {
+//     public checkMethod()
+//     {
+//         Console.WriteLine("Hello from check");
+//     }
+// }
 
 //Base Class 2.
 public class Bike
@@ -42,7 +52,7 @@ public class Bike
     public string name;
     public void Display()
     {
-        Console.WriteLine("Hello from Bike.");
+        Console.WriteLine($"Hello from Bike: {name}");
     }
 }
 
@@ -75,7 +85,7 @@ public class PetrolBike : Bike, ISound
     {
         //implementation of parent method: Display().
         base.Display();
-        Console.WriteLine("Hello I am Petrol Version");
+        Console.WriteLine($"Hello I am Petrol Version, Model: {model}, Mileage: {mileage}");
     }
 
     public void Sound()
