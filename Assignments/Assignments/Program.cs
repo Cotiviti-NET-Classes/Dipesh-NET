@@ -33,6 +33,9 @@ namespace ABC
 
             /********** Displaying Assignment 2. **********/
 
+            //Trying to Instantiate Car class gives error as it is abstract class
+            // Car car = new();
+
             //Grand Child.
             Console.WriteLine("--------- Grand Child ---------");
             Hummer hummer = new()
@@ -41,7 +44,7 @@ namespace ABC
                 voltage = 250,
                 mileage = 30.24,
             };
-            hummer.Display();
+            hummer.display();
             hummer.Charge();
             Console.WriteLine("");
 
@@ -63,7 +66,7 @@ namespace ABC
                 model = "FZ",
                 mileage = 20.5,
             };
-            petrolBike.Display();
+            petrolBike.display();
             petrolBike.Sound();
             Console.WriteLine("");
 

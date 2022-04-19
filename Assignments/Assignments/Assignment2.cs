@@ -2,12 +2,12 @@ using System;
 
 namespace Assignments;
 
-// Base Class 1.
-public class Car
+// Base Class 1 which cannot be instantiated.
+public abstract class Car
 {
     // private Car() { }
     public string name;
-    public void Display()
+    public void display()
     {
         Console.WriteLine($"Hello from Car: {name}");
     }
@@ -19,7 +19,7 @@ public class ElectricVehicle : Car, ICharge
     public int voltage;
 
     //Overriding the Parent method: Display()
-    public void Display()
+    public void display()
     {
         Console.WriteLine($"Hello, I am EV Car: {name}, Voltage: {voltage}");
     }
@@ -50,7 +50,7 @@ public sealed class Hummer : ElectricVehicle
 public class Bike
 {
     public string name;
-    public void Display()
+    public void display()
     {
         Console.WriteLine($"Hello from Bike: {name}");
     }
@@ -81,10 +81,10 @@ public class PetrolBike : Bike, ISound
     public double mileage;
 
     //overriding the parent method: Display()
-    public void Display()
+    public void display()
     {
         //implementation of parent method: Display().
-        base.Display();
+        base.display();
         Console.WriteLine($"Hello I am Petrol Version, Model: {model}, Mileage: {mileage}");
     }
 
