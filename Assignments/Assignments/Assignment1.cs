@@ -1,7 +1,7 @@
 using System;
 
 namespace Assignments;
-class Assignment
+class Assignment1
 {
 
     //This method by using multiple parameters.
