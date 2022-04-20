@@ -37,38 +37,55 @@ namespace ABC
             // Car car = new();
 
             //Grand Child.
-            Console.WriteLine("--------- Grand Child ---------");
-            Hummer hummer = new()
-            {
-                name = "HummerEV",
-                voltage = 250,
-                mileage = 30.24,
-            };
-            hummer.display();
-            hummer.Charge();
-            Console.WriteLine("");
+            // Console.WriteLine("--------- Grand Child ---------");
+            // Hummer hummer = new()
+            // {
+            //     name = "HummerEV",
+            //     voltage = 250,
+            //     mileage = 30.24,
+            // };
+            // hummer.display();
+            // hummer.Charge();
+            // Console.WriteLine("");
 
-            Console.WriteLine("--------- Child 2, with 2 Interface ---------");
-            ElectricBike electricBike = new()
-            {
-                name = "TVS",
-                model = "iQube Electric",
-                mileage = 50.23,
-            };
-            electricBike.Charge();
-            electricBike.Sound();
-            Console.WriteLine("");
+            // Console.WriteLine("--------- Child 2, with 2 Interface ---------");
+            // ElectricBike electricBike = new()
+            // {
+            //     name = "TVS",
+            //     model = "iQube Electric",
+            //     mileage = 50.23,
+            // };
+            // electricBike.Charge();
+            // electricBike.Sound();
+            // Console.WriteLine("");
 
-            Console.WriteLine("--------- Child 3, with 1 interface ---------");
-            PetrolBike petrolBike = new()
-            {
-                name = "Yamaha",
-                model = "FZ",
-                mileage = 20.5,
-            };
-            petrolBike.display();
-            petrolBike.Sound();
-            Console.WriteLine("");
+            // Console.WriteLine("--------- Child 3, with 1 interface ---------");
+            // PetrolBike petrolBike = new()
+            // {
+            //     name = "Yamaha",
+            //     model = "FZ",
+            //     mileage = 20.5,
+            // };
+            // petrolBike.display();
+            // petrolBike.Sound();
+            // Console.WriteLine("");
+
+
+            /********** Displaying Assignment 3. **********/
+
+            // PetrolMotorBike value = new()
+            // {
+            //     Name = "Yamaha",
+            //     Color = "Blue",
+            // };
+
+            PetrolMotorBike value = new PetrolMotorBike("Yamaha", "Red");
+
+            Console.WriteLine($"Name: {value.Display().name} , Color: {value.Display().color}");
+            Console.WriteLine($"Fuel: {value.fuelType}");
+            Console.WriteLine($"Choice: {value.ColorChoice}");
+
+
 
         }
 
