@@ -38,7 +38,7 @@ class FileHandle
         string str = texts;
 
         char[] specialChar = new char[] {'~', '`', '!', '@', '#', '$', '%', '^', '&', '*','(', ')', '-', '_',
-        '+', '=', '{', '}', '[', ']', '|', '?', '/', '.', ',', '<', '>'};
+        '+', '=', '{', '}', '[', ']', '|', '?', '/', '.', ',', '<', '>', '\'', '\"', ':', ';'};
 
         // Creating array of string length 
         char[] ch = new char[str.Length];
@@ -56,14 +56,13 @@ class FileHandle
         // Printing content of array 
         foreach (char c in ch)
         {
-            Console.WriteLine(c);
             // Console.WriteLine(c);
-            if (!specialChar.Contains(c) && c != '\n' && c != ' ' && c != '\'' && c != '\"' && c != ':' && c != ';')
+            if (!specialChar.Contains(c) && c != '\n' && c != ' ')
             {
                 charCount += 1;
                 // Console.WriteLine("space");
             }
-            else if (specialChar.Contains(c) || c == '\'' || c == '\"' || c == ':' || c == ';')
+            else if (specialChar.Contains(c))
             {
                 specialCharCount += 1;
             }
