@@ -30,7 +30,9 @@ class FileHandle
 
         //vowels count
         int vowelCount = System.Text.RegularExpressions.Regex.Matches(texts.ToLower(), "[aeoiu]").Count;
+        int sentenceCount = System.Text.RegularExpressions.Regex.Matches(texts, "[.!?]").Count;
         Console.WriteLine($"Total vowels: {vowelCount}");
+        Console.WriteLine($"Total sentence: {sentenceCount}");
 
 
 
