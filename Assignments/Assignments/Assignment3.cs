@@ -15,17 +15,14 @@ class PetrolMotorBike
 
         this.Name = name;
         this.Color = color;
-        // Console.WriteLine("Hello3");
 
         if (color.ToUpper() == "PINK" || color.ToUpper() == "RED")
         {
             this.ColorChoice = "Girls";
-            // Console.WriteLine("Hello1");
         }
         else
         {
             this.ColorChoice = "Boys";
-            // Console.WriteLine("Hello2");
         }
     }
 

@@ -79,13 +79,17 @@ namespace ABC
             //     Color = "Blue",
             // };
 
-            PetrolMotorBike value = new PetrolMotorBike("Yamaha", "Red");
+            // PetrolMotorBike value = new PetrolMotorBike("Yamaha", "Red");
 
-            Console.WriteLine($"Name: {value.Display().name} , Color: {value.Display().color}");
-            Console.WriteLine($"Fuel: {value.fuelType}");
-            Console.WriteLine($"Choice: {value.ColorChoice}");
+            // Console.WriteLine($"Name: {value.Display().name} , Color: {value.Display().color}");
+            // Console.WriteLine($"Fuel: {value.fuelType}");
+            // Console.WriteLine($"Choice: {value.ColorChoice}");
 
 
+            /********** Displaying Assignment 4. **********/
+
+            FileHandle var = new();
+            var.data();
 
         }
 
