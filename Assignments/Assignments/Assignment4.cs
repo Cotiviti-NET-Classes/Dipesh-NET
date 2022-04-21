@@ -56,13 +56,14 @@ class FileHandle
         // Printing content of array 
         foreach (char c in ch)
         {
+            Console.WriteLine(c);
             // Console.WriteLine(c);
-            if (!specialChar.Contains(c) && c != '\n' && c != ' ')
+            if (!specialChar.Contains(c) && c != '\n' && c != ' ' && c != '\'' && c != '\"' && c != ':' && c != ';')
             {
                 charCount += 1;
                 // Console.WriteLine("space");
             }
-            else if (specialChar.Contains(c))
+            else if (specialChar.Contains(c) || c == '\'' || c == '\"' || c == ':' || c == ';')
             {
                 specialCharCount += 1;
             }
