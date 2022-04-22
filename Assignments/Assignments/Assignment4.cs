@@ -8,10 +8,10 @@ class FileHandle
     public void data()
     {
         // Read the file as one string.
-        string texts = File.ReadAllText("check.txt");
+        string texts = File.ReadAllText("file.txt");
 
         // Read the file as an array.
-        string[] textArray = File.ReadAllLines("check.txt");
+        string[] textArray = File.ReadAllLines("file.txt");
 
 
 

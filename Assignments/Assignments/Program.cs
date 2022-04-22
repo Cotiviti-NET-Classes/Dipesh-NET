@@ -88,9 +88,14 @@ namespace ABC
 
             /********** Displaying Assignment 4. **********/
 
-            FileHandle var = new();
-            var.data();
+            // FileHandle var = new();
+            // var.data();
 
+
+            /********** Displaying Assignment 5. **********/
+
+            RealTimeExample value = new();
+            value.FileHandlingTask();
         }
 
     }
