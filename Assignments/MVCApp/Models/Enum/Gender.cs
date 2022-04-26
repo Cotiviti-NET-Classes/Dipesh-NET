@@ -2,7 +2,7 @@ namespace MVCApp.Enum;
 
 public enum Gender
 {
-    Male = 'M',
-    Female = 'F',
-    Others = 'O'
+    Male = 1,
+    Female = 2,
+    Others = 3
 }
