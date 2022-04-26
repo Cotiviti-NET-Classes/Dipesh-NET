@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace HRApp.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Employee.Include(e => e.Dept).Include(e => e.Designations);
+            var applicationDbContext = _context.Employee.Include(e => e.Department).Include(e => e.Designation);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,8 +36,8 @@ namespace HRApp.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Dept)
-                .Include(e => e.Designations)
+                .Include(e => e.Department)
+                .Include(e => e.Designation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
@@ -50,8 +50,8 @@ namespace HRApp.Controllers
         // GET: Employee/Create
         public IActionResult Create()
         {
-            ViewData["DeptID"] = new SelectList(_context.Department, "Id", "DepartmentName");
-            ViewData["DesignationID"] = new SelectList(_context.Designation, "Id", "DesignationName");
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "DepartmentName");
+            ViewData["DesignationId"] = new SelectList(_context.Designation, "DesignationId", "DesignationName");
             return View();
         }
 
@@ -60,18 +60,16 @@ namespace HRApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ContactNumber,JoinDate,DeptID,DesignationID")] Employee employee)
+        public async Task<IActionResult> Create([Bind("Id,Name,ContactNumber,Gender,JoinDate,DepartmentId,DesignationId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-                Console.Write("Done");
             }
-            ViewData["DeptID"] = new SelectList(_context.Department, "Id", "DepartmentName", employee.DeptID);
-            ViewData["DesignationID"] = new SelectList(_context.Designation, "Id", "DesignationName", employee.DesignationID);
-            Console.Write("Not Done");
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "DepartmentName", employee.DepartmentId);
+            ViewData["DesignationId"] = new SelectList(_context.Designation, "DesignationId", "DesignationName", employee.DesignationId);
             return View(employee);
         }
 
@@ -88,8 +86,8 @@ namespace HRApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["DeptID"] = new SelectList(_context.Department, "Id", "DepartmentName", employee.DeptID);
-            ViewData["DesignationID"] = new SelectList(_context.Designation, "Id", "DesignationName", employee.DesignationID);
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "DepartmentName", employee.DepartmentId);
+            ViewData["DesignationId"] = new SelectList(_context.Designation, "DesignationId", "DesignationName", employee.DesignationId);
             return View(employee);
         }
 
@@ -98,7 +96,7 @@ namespace HRApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ContactNumber,JoinDate,DeptID,DesignationID")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ContactNumber,Gender,JoinDate,DepartmentId,DesignationId")] Employee employee)
         {
             if (id != employee.Id)
             {
@@ -125,8 +123,8 @@ namespace HRApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeptID"] = new SelectList(_context.Department, "Id", "DepartmentName", employee.DeptID);
-            ViewData["DesignationID"] = new SelectList(_context.Designation, "Id", "DesignationName", employee.DesignationID);
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "DepartmentName", employee.DepartmentId);
+            ViewData["DesignationId"] = new SelectList(_context.Designation, "DesignationId", "DesignationName", employee.DesignationId);
             return View(employee);
         }
 
@@ -139,8 +137,8 @@ namespace HRApp.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Dept)
-                .Include(e => e.Designations)
+                .Include(e => e.Department)
+                .Include(e => e.Designation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {

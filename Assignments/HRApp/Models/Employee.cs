@@ -12,16 +12,24 @@ namespace HRApp.Models
         public string Name { get; set; }
         [Required]
         public string ContactNumber { get; set; }
+        public Gender Gender { get; set; }
         [Required]
         public DateTime JoinDate { get; set; }
-        [ForeignKey("Dept")]
-        public int DeptID { get; set; }
-        [ForeignKey("Designations")]
-        public int DesignationID { get; set; }
+
+        public int DepartmentId { get; set; }
+        public Department? Department { get; set; }
+
+        public int DesignationId { get; set; }
+        public Designation? Designation { get; set; }
 
 
-        public virtual Department Dept { get; set; }
-        public virtual Designation Designations { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male = 1,
+        Female = 2,
+        Others = 3,
     }
 
 }

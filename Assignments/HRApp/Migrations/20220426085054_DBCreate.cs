@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRApp.Migrations
 {
-    public partial class DbCreate : Migration
+    public partial class DBCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,26 +13,26 @@ namespace HRApp.Migrations
                 name: "Department",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    DepartmentId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     DepartmentName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.Id);
+                    table.PrimaryKey("PK_Department", x => x.DepartmentId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Designation",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    DesignationId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     DesignationName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Designation", x => x.Id);
+                    table.PrimaryKey("PK_Designation", x => x.DesignationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,35 +44,35 @@ namespace HRApp.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     ContactNumber = table.Column<string>(type: "TEXT", nullable: false),
                     JoinDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DeptID = table.Column<int>(type: "INTEGER", nullable: false),
-                    DesignationID = table.Column<int>(type: "INTEGER", nullable: false)
+                    DepartmentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DesignationId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employee", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Employee_Department_DeptID",
-                        column: x => x.DeptID,
+                        name: "FK_Employee_Department_DepartmentId",
+                        column: x => x.DepartmentId,
                         principalTable: "Department",
-                        principalColumn: "Id",
+                        principalColumn: "DepartmentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Employee_Designation_DesignationID",
-                        column: x => x.DesignationID,
+                        name: "FK_Employee_Designation_DesignationId",
+                        column: x => x.DesignationId,
                         principalTable: "Designation",
-                        principalColumn: "Id",
+                        principalColumn: "DesignationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_DeptID",
+                name: "IX_Employee_DepartmentId",
                 table: "Employee",
-                column: "DeptID");
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_DesignationID",
+                name: "IX_Employee_DesignationId",
                 table: "Employee",
-                column: "DesignationID");
+                column: "DesignationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

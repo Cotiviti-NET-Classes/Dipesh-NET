@@ -35,7 +35,7 @@ namespace HRApp.Controllers
             }
 
             var designation = await _context.Designation
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DesignationId == id);
             if (designation == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace HRApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DesignationName")] Designation designation)
+        public async Task<IActionResult> Create([Bind("DesignationId,DesignationName")] Designation designation)
         {
             if (ModelState.IsValid)
             {
@@ -87,9 +87,9 @@ namespace HRApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DesignationName")] Designation designation)
+        public async Task<IActionResult> Edit(int id, [Bind("DesignationId,DesignationName")] Designation designation)
         {
-            if (id != designation.Id)
+            if (id != designation.DesignationId)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace HRApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DesignationExists(designation.Id))
+                    if (!DesignationExists(designation.DesignationId))
                     {
                         return NotFound();
                     }
@@ -126,7 +126,7 @@ namespace HRApp.Controllers
             }
 
             var designation = await _context.Designation
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.DesignationId == id);
             if (designation == null)
             {
                 return NotFound();
@@ -148,7 +148,7 @@ namespace HRApp.Controllers
 
         private bool DesignationExists(int id)
         {
-            return _context.Designation.Any(e => e.Id == id);
+            return _context.Designation.Any(e => e.DesignationId == id);
         }
     }
 }

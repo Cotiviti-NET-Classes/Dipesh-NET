@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220426013145_DbCreate")]
-    partial class DbCreate
+    [Migration("20220426085054_DBCreate")]
+    partial class DBCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace HRApp.Migrations
 
             modelBuilder.Entity("HRApp.Models.Department", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -29,14 +29,14 @@ namespace HRApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("DepartmentId");
 
                     b.ToTable("Department");
                 });
 
             modelBuilder.Entity("HRApp.Models.Designation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DesignationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -44,7 +44,7 @@ namespace HRApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("DesignationId");
 
                     b.ToTable("Designation");
                 });
@@ -59,10 +59,10 @@ namespace HRApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("DeptID")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DesignationID")
+                    b.Property<int>("DesignationId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("JoinDate")
@@ -74,30 +74,40 @@ namespace HRApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeptID");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("DesignationID");
+                    b.HasIndex("DesignationId");
 
                     b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("HRApp.Models.Employee", b =>
                 {
-                    b.HasOne("HRApp.Models.Department", "Dept")
-                        .WithMany()
-                        .HasForeignKey("DeptID")
+                    b.HasOne("HRApp.Models.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HRApp.Models.Designation", "Designations")
-                        .WithMany()
-                        .HasForeignKey("DesignationID")
+                    b.HasOne("HRApp.Models.Designation", "Designation")
+                        .WithMany("Employees")
+                        .HasForeignKey("DesignationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Dept");
+                    b.Navigation("Department");
 
-                    b.Navigation("Designations");
+                    b.Navigation("Designation");
+                });
+
+            modelBuilder.Entity("HRApp.Models.Department", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("HRApp.Models.Designation", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

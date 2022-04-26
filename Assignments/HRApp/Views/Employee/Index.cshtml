@@ -19,13 +19,16 @@
                 @Html.DisplayNameFor(model => model.ContactNumber)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.JoinDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dept)
+                @Html.DisplayNameFor(model => model.Department)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Designations)
+                @Html.DisplayNameFor(model => model.Designation)
             </th>
             <th></th>
         </tr>
@@ -40,13 +43,16 @@
                 @Html.DisplayFor(modelItem => item.ContactNumber)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.JoinDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Dept.DepartmentName)
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Designations.DesignationName)
+                @Html.DisplayFor(modelItem => item.Designation.DesignationName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
